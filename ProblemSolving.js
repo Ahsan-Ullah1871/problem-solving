@@ -7,21 +7,10 @@ function reverseString(str) {
 			findUpperCase.push(index);
 		}
 	}
-	var makeArray = str.split("").reverse();
-	var create = [];
-	for (let i = 0; i < makeArray.length; i++) {
-		for (let j = 0; j < findUpperCase.length; j++) {
-			if (i !== findUpperCase[j]) {
-				create.push(makeArray[i].toLowerCase());
-				break;
-			} else {
-				console.log(findUpperCase[j]);
-				const upperCaseLetter = makeArray[i].toUpperCase();
-				create.push(upperCaseLetter);
-				break;
-			}
-		}
-	}
+	var makeArray = str.toLowerCase().split("").reverse();
+	var create = makeArray.map((letter, index) =>
+		findUpperCase.includes(index) ? letter.toUpperCase() : letter
+	);
 
 	return create.join("");
 }
